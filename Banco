@@ -1,0 +1,69 @@
+---------------cidades----
+INSERT INTO cidades(cid_id,cid_nome, cid_uf) VALUES (default, 'Marau','RS');
+INSERT INTO cidades(cid_id,cid_nome, cid_uf) VALUES (default, 'Curitiba','PR');
+INSERT INTO cidades(cid_id,cid_nome, cid_uf) VALUES (default, 'Barra Velha','SC');
+INSERT INTO cidades(cid_id,cid_nome, cid_uf) VALUES (default, 'São Paulo','SP');
+
+---------------Clientes----
+INSERT INTO Clientes 
+(cli_id,cli_nome,cli_cpf,cli_endereco,cli_email,cli_sexo,cli_bairro,cli_cep,cli_fone1,cli_fone2,cli_datanasc,cli_status,cli_maladireta,cid_id,cli_tipo,cli_senha)
+VALUES (default,'Maria da Silva','22244455577','Av Julio Borella 678 Ap 405','mariasilva@hotmail.com','F','Centro','99150-000','54 99875412','54 81234528','25/01/1990','1','9','1','1','ifsul');
+
+INSERT INTO Clientes 
+(cli_id,cli_nome,cli_cpf,cli_endereco,cli_email,cli_sexo,cli_bairro,cli_cep,cli_fone1,cli_fone2,cli_datanasc,cli_status,cli_maladireta,cid_id,cli_tipo,cli_senha)
+VALUES (default,'Paulo oliveira','99988877711','Av Brasil 888','paulo2011@hotmail.com','M','Colina','99158-555','54 99334455','54 8122339999','25/01/1980','1','9','2','2','ifsul');
+
+INSERT INTO Clientes 
+(cli_id,cli_nome,cli_cpf,cli_endereco,cli_email,cli_sexo,cli_bairro,cli_cep,cli_fone1,cli_fone2,cli_datanasc,cli_status,cli_maladireta,cid_id,cli_tipo,cli_senha)
+VALUES (default,'aluno','99999988822','Rua 1 de Maio 123','aluno@ifsul.edu.br','M','Santa Rita','99885-987','54 91111111','54 8122222222','14/10/1987','1','9','3','2','ifsul');
+
+---------------Produtos----
+INSERT INTO Produtos 
+(pro_id,pro_descricao,pro_valor,pro_detalhes,pro_estoque,pro_peso,pro_promocao,cat_id,pro_dimensao,pro_numeracao)
+VALUES (default,'Camiseta Gremio','200.00','Treino 2015','50','200','1','1','10x10','G');
+INSERT INTO Produtos 
+(pro_id,pro_descricao,pro_valor,pro_detalhes,pro_estoque,pro_peso,pro_promocao,cat_id,pro_dimensao,pro_numeracao)
+VALUES (default,'Camiseta Inter','100.00','Treino 2015','50','200','1','1','10x10','M');
+INSERT INTO Produtos 
+(pro_id,pro_descricao,pro_valor,pro_detalhes,pro_estoque,pro_peso,pro_promocao,cat_id,pro_dimensao,pro_numeracao)
+VALUES (default,'Camiseta São Paulo','150.00','Treino 2015','50','200','1','1','10x10','G');
+INSERT INTO Produtos 
+(pro_id,pro_descricao,pro_valor,pro_detalhes,pro_estoque,pro_peso,pro_promocao,cat_id,pro_dimensao,pro_numeracao)
+VALUES (default,'Camiseta Gremio','180.00','Treino 2015','50','200','1','1','10x10','M');
+INSERT INTO Produtos 
+(pro_id,pro_descricao,pro_valor,pro_detalhes,pro_estoque,pro_peso,pro_promocao,cat_id,pro_dimensao,pro_numeracao)
+VALUES (default,'Camiseta Gremio','120.00','Treino 2015','50','200','1','1','10x10','PP');
+
+---------------categorias----
+INSERT INTO categorias 
+(cat_id,cat_descricao) 
+VALUES (default,'camisetas');
+
+INSERT INTO categorias 
+(cat_id,cat_descricao) 
+VALUES (default,'calcao');
+
+INSERT INTO categorias 
+(cat_id,cat_descricao) 
+VALUES (default,'meias');
+
+INSERT INTO categorias 
+(cat_id,cat_descricao) 
+VALUES (default,'bones');
+
+---------------pedidos----
+INSERT INTO Pedidos (ped_id,ped_data,ped_hora,ped_total,ped_frete,ped_tipopag,ped_status,ped_dataenvio,cli_id,ped_tipofrete,ped_endereco,ped_bairro,ped_cep,cid_id)
+VALUES (default,'30/10/2015','14:10:23','500.00','15.90','1','1','03/11/2015','1','1','av brasil 514','centro','99150-000','5');
+INSERT INTO Pedidos (ped_id,ped_data,ped_hora,ped_total,ped_frete,ped_tipopag,ped_status,ped_dataenvio,cli_id,ped_tipofrete,ped_endereco,ped_bairro,ped_cep,cid_id)
+VALUES (default,'21/04/2016','19:10:23','100.00','22.90','2','3','03/05/2016','1','1','Rua 15 de Novembro 514','colina','99124-345','7');
+
+
+
+
+
+
+
+
+
+
+
