@@ -57,6 +57,13 @@ VALUES (default,'30/10/2015','14:10:23','500.00','15.90','1','1','03/11/2015','1
 INSERT INTO Pedidos (ped_id,ped_data,ped_hora,ped_total,ped_frete,ped_tipopag,ped_status,ped_dataenvio,cli_id,ped_tipofrete,ped_endereco,ped_bairro,ped_cep,cid_id)
 VALUES (default,'21/04/2016','19:10:23','100.00','22.90','2','3','03/05/2016','1','1','Rua 15 de Novembro 514','colina','99124-345','7');
 
+----------pedidos_itens-------------------
+INSERT INTO Pedidos_itens (ped_id,pro_id,ite_qtd,ite_valor)
+VALUES ('2','2','3','200.00');
+INSERT INTO Pedidos_itens (ped_id,pro_id,ite_qtd,ite_valor)
+VALUES ('2','3','3','100.00');
+INSERT INTO Pedidos_itens (ped_id,pro_id,ite_qtd,ite_valor)
+VALUES ('3','4','1','150.00');
 
 
 
