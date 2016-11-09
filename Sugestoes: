@@ -1,0 +1,22 @@
+
+
+Tabela Clientes
+Cli_Sexo	F (Feminino) / M (Masculino)
+Cli_Status	A (Ativo) / I (Inativo)
+Cli_maladireta	S(Sim) N (Não)
+Cli_tipo	C (Cliente), F (Funcionário), G (Gerente)
+E-mail deve ser único (não pode ter dois usuários com mesmo e-mail)
+Todos os tipos de cliente podem comprar (C, F e G)
+Somente tipos F e G podem acessar área administrativa
+Ao gravar um novo cliente, o CLI_TIPO padrão é “C” (não precisa estar no formulário)
+Pode alterar o CLI_TIPO na manutenção da área administrativa
+O CLI_STATUS  padrão é “A”. Pode ser alterado apenas na área administrativa (ou seja, não vai estar no formulário)
+
+Tabela Pedidos
+Ped_tipopag	B (Boleto) / C (Cartão Crédito)
+Ped_Status	1 (Aguardando Pagamento), 2 (Pagamento Efetivado), 3 (Em processamento), 4 (Enviado), 5 (Entregue)
+Ped_tipofrete	1 (PAC), 2 (Sedex)
+	
+Ao gravar um novo pedido o PED_STATUS deve ser “1”.
+O PED_STATUS pode ser alterado na área administrativa.
+
