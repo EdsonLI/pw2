@@ -3,12 +3,12 @@
 DESENVOLVIDO POR EDGAR SERRA
 http://www.edgarserra.com
 */
-function calcula_frete($servico,$cep_origem,$cep_destino,$peso,$mao_propria,$valor_declarado,$aviso_recebimento){
+function calcula_frete($servico, $cep_origem, $cep_destino, $peso, $mao_propria, $valor_declarado, $aviso_recebimento){
 
-$mao_propria = (strtolower($mao_propria) == 's')?'s':'n';
-$aviso_recebimento = (strtolower($aviso_recebimento) == 's')?'s':'n';
+$mao_propria = (strtolower($mao_propria) == 's') ? 's' : 'n';
+$aviso_recebimento = (strtolower($aviso_recebimento) == 's') ? 's' : 'n';
 
-$url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem='. $cep_origem .'&sCepDestino='. $cep_destino .'&nVlPeso='. $peso .'&nCdFormato=1&nVlComprimento=20&nVlAltura=5&nVlLargura=15&sCdMaoPropria='. $mao_propria .'&nVlValorDeclarado='. $valor_declarado .'&sCdAvisoRecebimento='. $aviso_recebimento .'&nCdServico='. $servico .'&nVlDiametro=0&StrRetorno=xml';;
+$url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem='. $cep_origem .'&sCepDestino='. $cep_destino .'&nVlPeso='. $peso .'&nCdFormato=1&nVlComprimento=20&nVlAltura=5&nVlLargura=15&sCdMaoPropria='. $mao_propria .'&nVlValorDeclarado='. $valor_declarado .'&sCdAvisoRecebimento='. $aviso_recebimento .'&nCdServico='. $servico .'&nVlDiametro=0&StrRetorno=xml';
 
 $frete_calcula = simplexml_load_string(file_get_contents($url));
 /*
@@ -29,7 +29,7 @@ if($frete->Erro == '0'){
         default: $servico = 'SEDEX';
     }
 
-    $retorno = 'Serviço: '.$servico.'<br>';
+    $retorno = 'Serviços: '.$servico.'<br>';
     $retorno .= 'Valor: '.$frete->Valor.'<br>';
     $retorno .= 'Prazo de entrega: '.$frete->PrazoEntrega.' dia(s)';
 
@@ -72,5 +72,5 @@ n - Mão própria
 700 - Valor declarado (R$7,00)
 s - Aviso de recebimento
 */
-	echo calcula_frete('40010','97032120','99150000','2','n','700','s');
+	echo calcula_frete('40290','97032120','99150000','2','n','700','s');
 ?>
