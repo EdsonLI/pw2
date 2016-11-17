@@ -9,12 +9,12 @@
 
         // metodo construtor
         public function __construct() {
-            echo "chamou o construtor";
+            //echo "chamou o construtor";
             //$this->con = new Conecta();
             //$this->bd = $this->con->getBd();
-            //$this->ordem = "modelo";            
+            //$this->ordem = "modelo";
         }
-        
+
         public function calcula_frete($servico, $cep_origem, $cep_destino, $peso, $mao_propria, $valor_declarado, $aviso_recebimento) {
             $mao_propria = (strtolower($mao_propria) == 's') ? 's' : 'n';
             $aviso_recebimento = (strtolower($aviso_recebimento) == 's') ? 's' : 'n';
@@ -26,7 +26,7 @@
             //echo print_r($frete_calcula);
             //echo '<br/><br/>';
             $frete = $frete_calcula->cServico;
-            if ($frete->Erro == '0') {
+            /*if ($frete->Erro == '0') {
                 switch ($frete->Codigo) {
                     case 41106: $servico = 'PAC';
                         break;
@@ -38,19 +38,21 @@
                         //break;
                     default: $servico = 'SEDEX';
                 }
-                $retorno = 'Serviços: ' . $servico . '<br>';
-                $retorno .= 'Valor: ' . $frete->Valor . '<br>';
-                $retorno .= 'Prazo de entrega: ' . $frete->PrazoEntrega . ' dia(s)';
+                //$retorno = 'Serviços: ' . $servico . '<br>';
+                //$retorno .= 'Valor: ' . $frete->Valor . '<br>';
+                //$retorno .= 'Prazo de entrega: ' . $frete->PrazoEntrega . ' dia(s)';
+
             } elseif ($frete->Erro == '7') {
-                $retorno = 'Serviço temporariamente indisponível, tente novamente mais tarde.';
+                $frete = 'Serviço temporariamente indisponível, tente novamente mais tarde.';
+                //return $frete;
             } else {
-                $retorno .= ($frete->Erro == '8') ? 'Serviço indisponível para a localidade informada' : 'Erro na operação de cálculo do frete! Código do erro: '.$frete->Erro;
-            }
-            return $frete_calcula;
+                $frete = ($frete->Erro == '8') ? 'Serviço indisponível para a localidade informada' : 'Erro na operação de cálculo do frete! Código do erro: '.$frete->Erro;
+            }*/
+            return $frete;
         }
-               
+
         function __destruct() {
-            echo "chamou o destrutor";
+            //echo "chamou o destrutor";
         }
     }
 ?>

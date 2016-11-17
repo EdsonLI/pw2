@@ -1,4 +1,4 @@
-<?php ?>
+<?php include_once('calcFrete_control.php'); ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -13,12 +13,13 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
         <script src="scripts/jquery-ui-1.12.1.custom/jquery-ui.min.js" type="text/javascript"></script>
-        <link href="scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>        
+        <link href="scripts/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
         <!--<link type="text/css" rel="stylesheet" href="css/principal.css">-->
         <!--<link type="text/css" rel="stylesheet" href="css/carrinho.css">-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--<link href="justified-nav.css" rel="stylesheet">-->
         <script src="scripts/bootstrap.min.js" type="text/javascript"></script>
+        <script src="calcFrete_js.js"></script>
     </head>
     <body>
         <div class="container">
@@ -40,7 +41,7 @@
                                 <h2></h2>
                             </div>
                             <div class="col-lg-4 text-right">
-                                <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>  
+                                <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>
                             </div>
                         </div>-->
             <div class="row">
@@ -110,26 +111,18 @@
                     <div class="well btn-group">
                         <a4>Calculo do Valor da Entrega:</a4> <br>
                         <label for="CEP"> Informe o CEP: &nbsp;</label>
-                        <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="CEP">
-                        <span class="input-group-btn">
-                            <button class="btn btn-sm calcFrete" type="button">Calcular!</button>
-                        </span><br>
+                        <div class="input-group">
+                           <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="CEP">
+                           <span class="input-group-btn">
+                              <button class="btn btn-default calcFrete" type="button">Calcular!</button>
+                           </span>
+                        </div>
                         <div id="tipo_entrega">
-                            <label class="btn">
-                                <input type="radio" id="entrega" name="entrega" value="pac" /> Via PAC: R$ 32,00 - 
-                            </label> <br>
-                            <label class="btn">
-                                <input type="radio" id="entrega" name="entrega" value="sedex-10" /> Sedex a Cobrar: 16,00 - 
-                            </label> <br>
-                            <label class="btn">
-                                <input type="radio" id="entrega" name="entrega" value="sedex" /> Via SEDEX: R$ 32,00  - 1 dia
-                            </label> <br>
-                            
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 text-right">
-                    Valor Total dos Produtos: 
+                    Valor Total dos Produtos:
                 </div>
                 <div class="col-lg-1 text-right">
                     <b>R$ 398,00</b>
@@ -159,7 +152,7 @@
                     <h2></h2>
                 </div>
                 <div class="col-lg-4 text-right">
-                    <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>  
+                    <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>
                 </div>
             </div>
 
@@ -189,4 +182,3 @@
     </footer>
 
 </html>
-<script src="calcFrete_js.js"></script>
