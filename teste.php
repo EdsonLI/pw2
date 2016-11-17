@@ -14,6 +14,7 @@ $frete_calcula = simplexml_load_string(file_get_contents($url));
 /*
 CASO QUEIRA VER TUDO QUE VEM DO SITE DOS CORREIOS, DESCOMENTE A LINHA ABAIXO.
 */
+echo '<br/><br/>';
 echo print_r($frete_calcula);
 echo '<br/><br/>';
 
@@ -23,9 +24,9 @@ if($frete->Erro == '0'){
 
     switch($frete->Codigo){
         case 41106: $servico = 'PAC'; break;
-        case 40045: $servico = 'SEDEX a Cobrar'; break;
+        //case 40045: $servico = 'SEDEX a Cobrar'; break;
         case 40215: $servico = 'SEDEX 10'; break;
-        case 40290: $servico = 'SEDEX Hoje'; break;
+        //case 40290: $servico = 'SEDEX Hoje'; break;
         default: $servico = 'SEDEX';
     }
 
@@ -34,13 +35,9 @@ if($frete->Erro == '0'){
     $retorno .= 'Prazo de entrega: '.$frete->PrazoEntrega.' dia(s)';
 
 } elseif($frete->Erro == '7') {
-
     $retorno = 'Serviço temporariamente indisponível, tente novamente mais tarde.';
-
 } else {
-
-    $retorno = 'Erro no cálculo do frete, código de erro: '.$frete->Erro;
-
+    $retorno .= ($frete->Erro == '8') ? 'Serviço indisponível para a localidade informada' : 'Erro no cálculo do frete, erro: '.$frete->Erro;
 }
 
 return $retorno;
@@ -72,8 +69,10 @@ n - Mão própria
 700 - Valor declarado (R$7,00)
 s - Aviso de recebimento
 
-OBS.: CODIGO DE ERRO 008 INFORMAR: Serviço indisponível para a localidade informada 
- 
+OBS.: CODIGO DE ERRO 008 INFORMAR: Serviço indisponível para a localidade informada
+
 */
-	echo calcula_frete('40215','90450000','90480201','1','s','600','s');
+	     echo calcula_frete('41106','97032120','99150000','1','s','600','s');
+       echo calcula_frete('40010','97032120','99150000','1','s','600','s');
+       echo calcula_frete('40215','97032120','99150000','1','s','600','s');
 ?>
