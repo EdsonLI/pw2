@@ -109,13 +109,14 @@
             <div class="table">
                 <div class="col-lg-5 text-left">
                     <div class="well btn-group">
-                        <a4>Calculo do Valor da Entrega:</a4><br><br>                        
+                        <a4>Calculo do Valor da Entrega:</a4><br><br>
                         <div class="input-group">
                            <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="Informe o CEP (formato: 99150-000)">
                            <span class="input-group-btn">
                               <button class="btn btn-default calcFrete" type="button">Calcular!</button>
                            </span>
                         </div>
+                        <br/>
                         <div id="tipo_entrega">
                         </div>
                     </div>

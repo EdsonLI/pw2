@@ -18,6 +18,9 @@ $().ready(function() {
            dataType: 'html',
            type: 'POST',
            data: { acao: 'calcFrete', cep: $cep  },
+           beforeSend: function() {
+              $("#tipo_entrega").html('<br><label class="alert alert-info col-md-12">Aguardando a resposta dos Correios. Muita calma nessa hora!</label>');
+           },
            success: function(dados) {
                //console.info('obteve retorno do calcFrete');
                //console.info('retorno: ', dados);
