@@ -13,7 +13,7 @@
         $modalidades = array('41106', '40215', '40010');
         $htm = '';
         for($cont = 0; $cont < 3; $cont++) {
-            $cf = $mod->calcula_frete($modalidades[$cont], '99064440', $_REQUEST['cep'], '2', 's', '700', 's');
+            $cf = $mod->calcula_frete($modalidades[$cont], '99064-440', $_REQUEST['cep'], '2', 's', '700', 's');
             //echo $cf->Erro.'<br/>';
             //echo $_REQUEST['CEP'];
             switch ($cf->Codigo) {
@@ -31,13 +31,11 @@
             $erro = $cf->Erro;
             if((int)$erro !== (int)'008') {
                 $htm .= '<label class="alert alert-success col-md-12">';
-                    $htm .= '<input type="radio" id="entrega" name="entrega" value="'.$erro." ".$modalidades[$cont].'" /> '.$servico.': R$ <span class="val_frete">'.$cf->Valor.'</span> - Prazo Estimado: <span class="prazo_frete">'.$cf->PrazoEntrega.'</span> dia(s)';
+                    $htm .= '<input type="radio" id="entrega" name="entrega" value="'.$modalidades[$cont].'" /> '.$servico.': R$ <span class="val_frete'.$modalidades[$cont].'">'.$cf->Valor.'</span> - Prazo Estimado: <span class="prazo_frete">'.$cf->PrazoEntrega.'</span> dia(s)';
                 $htm .= '</label><br>';
                 unset($cf);
             }
-        };
-
-
+        }
         echo $htm;
         //echo $cf->Codigo;
         //echo $cf->Valor;

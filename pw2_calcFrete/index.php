@@ -121,10 +121,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-right">
+                <div class="col-lg-5 text-right">
                     Valor Total dos Produtos:
                 </div>
-                <div class="col-lg-1 text-right">
+                <div class="col-lg-2 text-right">
                     <b>R$ 398,00</b>
                 </div>
             </div>
@@ -132,11 +132,11 @@
                 <div class="col-lg-5 text-left">
 
                 </div>
-                <div class="col-lg-6 text-right">
-                    Valor da Entrega via {Modalidade}:<br>
+                <div class="col-lg-5 text-right">
+                    Valor da Entrega<span class="modalidade"></span>:<br>
                 </div>
-                <div class="col-lg-1 text-right">
-                    <b>R$ 32,00</b>
+                <div class="col-lg-2 text-right">
+                    <b>R$ <span class="precoFrete"> -- </span></b>
                 </div>
             </div>
             <div class="row">
