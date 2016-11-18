@@ -28,10 +28,11 @@
                 default: $servico = 'SEDEX';
             }
             //echo $cf->Valor;
-            $erro = $cf->Erro;
-            if((int)$erro !== (int)'008') {
+            $erro = (int)$cf->Erro;
+            if($erro == 0) {
                 $htm .= '<label class="alert alert-success col-md-12">';
                     $htm .= '<input type="radio" id="entrega" name="entrega" value="'.$modalidades[$cont].'" /> '.$servico.': R$ <span class="val_frete'.$modalidades[$cont].'">'.$cf->Valor.'</span> - Prazo Estimado: <span class="prazo_frete">'.$cf->PrazoEntrega.'</span> dia(s)';
+                    $htm .= '<input type="hidden" value="'.$erro.'" />';
                 $htm .= '</label><br>';
                 unset($cf);
             }
