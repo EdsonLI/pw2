@@ -27,23 +27,7 @@
                 <div class="col-lg-6">
                     <h2>E-Commerce | PW2</h2>
                 </div>
-            </div><!-- /.row -->
-            <!--            <div class="row">
-                            <div class="col-lg-12">
-                                <hr>
-                            </div>
-                        </div>-->
-            <!--            <div class="row">
-                            <div class="col-lg-4">
-                                <button type="button" class="btn btn-default btn-lg">Continue Comprando</button>
-                            </div>
-                            <div class="col-lg-4">
-                                <h2></h2>
-                            </div>
-                            <div class="col-lg-4 text-right">
-                                <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>
-                            </div>
-                        </div>-->
+            </div>
             <div class="row">
                 <div class="col-lg-12">
                     <hr>
