@@ -25,9 +25,9 @@ $().ready(function () {
             }
         });
     });
-    
+
     $(document).on('change', '#entrega', function() {
-        //alert($('input[name=entrega]:checked').val()); 
+        //alert($('input[name=entrega]:checked').val());
         let $servico;
         switch($('input[name=entrega]:checked').val()) {
             case '41106': $servico = 'PAC';
@@ -38,9 +38,13 @@ $().ready(function () {
                 break;
             //case 40290: $servico = 'SEDEX Hoje';
                 //break;
-            default: $servico = 'SEDEX';            
+            default: $servico = 'SEDEX';
         }
         $('.modalidade').text(' ('+$servico+')');
         $('.precoFrete').text($('.val_frete'+$('input[name=entrega]:checked').val()).text());
+        //console.info( parseFloat( $('.precoFrete').text().replace(",", ".") ) );
+        $('.valorTotal').text(parseFloat($('.valorProdutos').text().replace(",", ".")) + parseFloat($('.precoFrete').text().replace(",", ".")) );
+
+        $('.valorTotal').text($('.valorTotal').text().replace(".", ","));
     });
 });
