@@ -76,13 +76,13 @@
                     <img src="images/11765725_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ 199,00
+                    <span class="vlrTotal">R$ 199,00</span>
                 </div>
                 <div class="col-lg-1 text-center">
                     <input size="2" name="quantidade" style="width:50px" min="0" max="99" step="1" type="number" value="1">
                 </div>
                 <div class="col-lg-1 text-center">
-                    R$ 199,00
+                    <span class="vlrTotal">R$ 99,00</span>
                 </div>
             </table>
             <div class="row">
