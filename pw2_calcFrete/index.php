@@ -57,10 +57,10 @@
                     <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item1">198,15</span>
+                    R$ <span class="item1">100,10</span>
                 </div>
                 <div class="col-lg-1 text-center">
-                    <input id="item1" size="2" name="quantidade" style="width:50px" min="1" max="99" step="1" type="number" value="1">
+                    <input id="item1" size="2" name="quantidade1" style="width:50px" min="1" max="99" step="1" type="number" value="1">
                 </div>
                 <div class="col-lg-1 text-center">
                     R$ <span class="totItem1">98,00</span>
@@ -76,10 +76,10 @@
                     <img src="images/11765725_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item2">199,00</span>
+                    R$ <span class="item2">100,10</span>
                 </div>
                 <div class="col-lg-1 text-center">
-                    <input id="item2" size="2" name="quantidade" style="width:50px" min="1" max="99" step="1" type="number" value="1">
+                    <input id="item2" size="2" name="quantidade2" style="width:50px" min="1" max="99" step="1" type="number" value="1">
                 </div>
                 <div class="col-lg-1 text-center">
                     R$ <span class="totItem2">99,00</span>

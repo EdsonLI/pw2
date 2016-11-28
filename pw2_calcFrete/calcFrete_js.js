@@ -7,6 +7,8 @@ $().ready(function () {
 
     $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
     $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
+    
+    //$('span.valorTotal').text($('span.valorProdutos').text());
 
     $(document).on('click', '.calcFrete', function (event) {
         event.preventDefault();
@@ -70,13 +72,21 @@ $().ready(function () {
 //        });
 //    });
 
-    $('input[name="quantidade"]').on('change keyup', function() {
+    $('input[name="quantidade1"]').on('change keyup', function() {
         console.info($(this).attr('id'));
         console.info($(this).val());
-        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
+        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val()).toFixed(2);
         $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
         atualizaTotal();
     });
+    
+    $('input[name="quantidade2"]').on('change keyup', function() {
+        console.info($(this).attr('id'));
+        console.info($(this).val());
+        $('span.totItem2').text(parseFloat($('span.item2').text().replace(",", ".")) * $(this).val());
+        $('span.totItem2').text($('span.totItem2').text().replace(".", ","));
+        atualizaTotal();
+    });    
 
     function atualizaTotal() {
         $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
