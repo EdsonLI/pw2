@@ -63,10 +63,22 @@ $().ready(function () {
 //    });
     
     $('input[name="quantidade"]').on('change keyup', function() {
-        console.info($(this).attr('id'));
-        var spanVal = $(this).next('span').text();
-        console.info(spanVal);
+        console.info($(this).attr('id'));       
         console.info($(this).val());
+        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
+        $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
+        atualizaTotal();
     });
+
+    function atualizaTotal() {
+        $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
+        $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
+        if($('span.precoFrete') !== ' -------- ') {
+            $('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
+            $('span.valorTotal').text($('span.valorTotal').text().replace(".", ","));
+        } else {
+            $('span.valorTotal').text($('span.valorProdutos').text());
+        }
+    }
     
 });

@@ -57,13 +57,13 @@
                     <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item">198,00</span>
+                    R$ <span class="item1">198,15</span>
                 </div>
                 <div class="col-lg-1 text-center">
                     <input id="item1" size="2" name="quantidade" style="width:50px" min="1" max="99" step="1" type="number" value="1">
                 </div>
                 <div class="col-lg-1 text-center">
-                    R$ <span class="item1">98,00</span>
+                    R$ <span class="totItem1">98,00</span>
                 </div>
             </table>
             <div class="row">
@@ -76,13 +76,13 @@
                     <img src="images/11765725_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ <span class="vlrTotal">199,00</span>
+                    R$ <span class="item2">199,00</span>
                 </div>
                 <div class="col-lg-1 text-center">
                     <input id="item2" size="2" name="quantidade" style="width:50px" min="1" max="99" step="1" type="number" value="1">
                 </div>
                 <div class="col-lg-1 text-center">
-                    R$ <span class="item2">99,00</span>
+                    R$ <span class="totItem2">99,00</span>
                 </div>
             </table>
             <div class="row">
