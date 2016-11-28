@@ -1,4 +1,12 @@
 $().ready(function () {
+    $('span.totItem1').text( parseFloat($('input#item1').val()) * parseFloat($('span.item1').text().replace(",", ".")) );
+    $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
+
+    $('span.totItem2').text( parseFloat($('input#item2').val()) * parseFloat($('span.item2').text().replace(",", ".")) );
+    $('span.totItem2').text($('span.totItem2').text().replace(".", ","));
+
+    $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
+    $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
 
     $(document).on('click', '.calcFrete', function (event) {
         event.preventDefault();
@@ -47,11 +55,11 @@ $().ready(function () {
 
         $('.valorTotal').text($('.valorTotal').text().replace(".", ","));
     });
-    
+
     $( "li" ).each(function( index ) {
       console.log( index + ": " + $( this ).text() );
-    });    
-    
+    });
+
 //    $("input[type='number']").bind("focus", function() {
 //        var value = $(this).val();
 //        $(this).bind("blur", function() {
@@ -61,9 +69,9 @@ $().ready(function () {
 //            $(this).unbind("blur");
 //        });
 //    });
-    
+
     $('input[name="quantidade"]').on('change keyup', function() {
-        console.info($(this).attr('id'));       
+        console.info($(this).attr('id'));
         console.info($(this).val());
         $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
         $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
@@ -73,12 +81,13 @@ $().ready(function () {
     function atualizaTotal() {
         $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
         $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
-        if($('span.precoFrete') !== ' -------- ') {
+
+        if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
             $('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
             $('span.valorTotal').text($('span.valorTotal').text().replace(".", ","));
         } else {
             $('span.valorTotal').text($('span.valorProdutos').text());
         }
     }
-    
+
 });
