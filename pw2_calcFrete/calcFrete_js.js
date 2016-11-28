@@ -75,7 +75,7 @@ $().ready(function () {
     $('input[name="quantidade1"]').on('change keyup', function() {
         console.info($(this).attr('id'));
         console.info($(this).val());
-        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val()).toFixed(2);
+        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
         $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
         atualizaTotal();
     });
