@@ -85,9 +85,9 @@ $().ready(function () {
         if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
             $('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
             $('span.valorTotal').text($('span.valorTotal').text().replace(".", ","));
-        } else {
+        } /*else {
             $('span.valorTotal').text($('span.valorProdutos').text());
-        }
+        }*/
     }
 
 });
