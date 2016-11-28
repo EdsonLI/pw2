@@ -47,4 +47,26 @@ $().ready(function () {
 
         $('.valorTotal').text($('.valorTotal').text().replace(".", ","));
     });
+    
+    $( "li" ).each(function( index ) {
+      console.log( index + ": " + $( this ).text() );
+    });    
+    
+//    $("input[type='number']").bind("focus", function() {
+//        var value = $(this).val();
+//        $(this).bind("blur", function() {
+//            if(value != $(this).val()) {
+//                alert("Value changed");
+//            }
+//            $(this).unbind("blur");
+//        });
+//    });
+    
+    $('input[name="quantidade"]').on('change keyup', function() {
+        console.info($(this).attr('id'));
+        var spanVal = $(this).next('span').text();
+        console.info(spanVal);
+        console.info($(this).val());
+    });
+    
 });
