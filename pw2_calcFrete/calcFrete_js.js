@@ -1,13 +1,14 @@
 $().ready(function () {
-    $('span.totItem1').text( parseFloat($('input#item1').val()) * parseFloat($('span.item1').text().replace(",", ".")) );
-    $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
+    let totItem1 = parseFloat($('input#item1').val()) * parseFloat($('span.item1').text().replace(",", "."));
+    $('span.totItem1').text( totItem1.toFixed(2).replace(".", ",") );
 
-    $('span.totItem2').text( parseFloat($('input#item2').val()) * parseFloat($('span.item2').text().replace(",", ".")) );
-    $('span.totItem2').text($('span.totItem2').text().replace(".", ","));
+    let totItem2 = parseFloat($('input#item2').val()) * parseFloat($('span.item2').text().replace(",", "."));
+    $('span.totItem2').text( totItem1.toFixed(2).replace(".", ",") );
 
-    $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
-    $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
-    
+    let totItem1Item2 = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
+
+    $('span.valorProdutos').text( totItem1Item2.toFixed(2).replace(".", ",") );
+
     //$('span.valorTotal').text($('span.valorProdutos').text());
 
     $(document).on('click', '.calcFrete', function (event) {
@@ -52,10 +53,10 @@ $().ready(function () {
         }
         $('.modalidade').text(' ('+$servico+')');
         $('.precoFrete').text($('.val_frete'+$('input[name=entrega]:checked').val()).text());
-        //console.info( parseFloat( $('.precoFrete').text().replace(",", ".") ) );
-        $('.valorTotal').text(parseFloat($('.valorProdutos').text().replace(",", ".")) + parseFloat($('.precoFrete').text().replace(",", ".")) );
+        let vlrTot = parseFloat($('.valorProdutos').text().replace(",", ".")) + parseFloat($('.precoFrete').text().replace(",", "."));
+        //$('.valorTotal').text( );
 
-        $('.valorTotal').text($('.valorTotal').text().replace(".", ","));
+        $('.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
     });
 
     $( "li" ).each(function( index ) {
@@ -75,26 +76,30 @@ $().ready(function () {
     $('input[name="quantidade1"]').on('change keyup', function() {
         console.info($(this).attr('id'));
         console.info($(this).val());
-        $('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
-        $('span.totItem1').text($('span.totItem1').text().replace(".", ","));
+        let totIt1 = parseFloat($('span.item1').text().replace(",", ".")) * $(this).val();
+        //$('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
+        $('span.totItem1').text(totIt1.toFixed(2).replace(".", ","));
         atualizaTotal();
     });
-    
+
     $('input[name="quantidade2"]').on('change keyup', function() {
         console.info($(this).attr('id'));
         console.info($(this).val());
-        $('span.totItem2').text(parseFloat($('span.item2').text().replace(",", ".")) * $(this).val());
-        $('span.totItem2').text($('span.totItem2').text().replace(".", ","));
+        let totIt2 = parseFloat($('span.item2').text().replace(",", ".")) * $(this).val();
+        //$('span.totItem2').text(parseFloat($('span.item2').text().replace(",", ".")) * $(this).val());
+        $('span.totItem2').text(totIt2.toFixed(2).replace(".", ","));
         atualizaTotal();
-    });    
+    });
 
     function atualizaTotal() {
-        $('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
-        $('span.valorProdutos').text($('span.valorProdutos').text().replace(".", ","));
+        let vlrProd = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
+        //$('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
+        $('span.valorProdutos').text(vlrProd.toFixed(2).replace(".", ","));
 
         if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
-            $('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
-            $('span.valorTotal').text($('span.valorTotal').text().replace(".", ","));
+            let vlrTot = parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", "."));
+            //$('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
+            $('span.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
         } /*else {
             $('span.valorTotal').text($('span.valorProdutos').text());
         }*/
