@@ -29,7 +29,7 @@ $().ready(function () {
             type: 'POST',
             data: {acao: 'calcFrete', cep: $cep},
             beforeSend: function () {
-                $("#tipo_entrega").html('<br><label class="alert alert-info col-md-12">Aguardando a resposta dos Correios. Muita calma nessa hora!</label>');
+                $("#tipo_entrega").html('<label class="alert alert-info col-md-12">Aguardando a resposta dos Correios...<img src="images/ring.svg" style="width:50px;height:50px;"/></label>');
             },
             success: function (dados) {
                 $("#tipo_entrega").html(dados);
