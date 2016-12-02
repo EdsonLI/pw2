@@ -1,6 +1,6 @@
 <?php
-    include_once('../../conecta.php');
-    include_once('calcFrete_class.php');
+    include('../../conecta.php');
+    include('calcFrete_class.php');
     $mod = new CalcFrete(); // criando objeto a partir da classe CalcFrete
 
     if (isset($_REQUEST['acao'])) //se chegou acao por GET ou POST

@@ -1,9 +1,9 @@
 $().ready(function () {
-    let totItem1 = parseFloat($('input#item1').val()) * parseFloat($('span.item1').text().replace(",", "."));
+    let totItem1 = parseFloat($('#quantidade1').val()) * parseFloat($('span.item1').text().replace(",", "."));
     $('span.totItem1').text( totItem1.toFixed(2).replace(".", ",") );
 
-    let totItem2 = parseFloat($('input#item2').val()) * parseFloat($('span.item2').text().replace(",", "."));
-    $('span.totItem2').text( totItem1.toFixed(2).replace(".", ",") );
+    let totItem2 = parseFloat($('#quantidade2').val()) * parseFloat($('span.item2').text().replace(",", "."));
+    $('span.totItem2').text( totItem2.toFixed(2).replace(".", ",") );
 
     let totItem1Item2 = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
 

@@ -1,23 +1,31 @@
-<?php //arquivo de conexão com o banco de dados
-    require('adodb5/adodb.inc.php');
+<?php
+    require 'adodb5/adodb.inc.php';
 
-    class Conecta {
-        var $bd;  //atributo da classe
-        function __construct(){
-            $this->bd=ADONewConnection(config_banco); //cria a conexão com o banco de dados
-            $this->bd->dialect=3; //define a versão do o dialeto do sql suportado
-            $this->bd->debug=true; //aciona o debug dos comandos sql que serão exibidos
+    class Conecta{
+        var $bd;
+        public function __construct() {
+            $this->bd = ADONewConnection("postgres");
+            $this->bd->debug = false;
             $this->bd->Connect("host=localhost port=5432 dbname=pw2 user=postgres password=123");
         }
 
-        public function getBd() {
+        public function getBd(){
             return $this->bd;
         }
-    } //fechamento da classe
+    }
 
-/* UTILIZAMOS OS COMANDOS ABAIXO PARA TESTAR SE A CONEXÃO ESTÁ ESTABELECIDA COM SUCESSO.
-  if($con = new conecta())
-    echo 'Conectado com sucesso!';
-  else
-    echo $con->ErrorMsg();*/
+/* Script de criação do BD e da tabela do projeto */
+/*
+ *  CREATE DATABASE bancopw2;
+ *
+ *  CREATE TABLE carros (
+ *     id serial NOT NULL,
+ *     marca character varying(250) NOT NULL,
+ *     modelo character varying(250) NOT NULL,
+ *     ano integer NOT NULL,
+ *     CONSTRAINT id PRIMARY KEY (id)
+ *  )
+ *
+ *  */
+
 ?>

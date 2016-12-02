@@ -30,8 +30,10 @@
                              AND cesit.pro_id = pro.pro_id
                              AND pro.pro_id = $id_produto";
 
+            #echo $this->sql;
+
             $this->res = $this->bd->Execute($this->sql);
-            return $this->res;
+            return $this->res->fields['pro_peso'];
         }
 
         function __destruct() {
