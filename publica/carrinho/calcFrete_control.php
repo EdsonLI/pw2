@@ -1,6 +1,6 @@
 <?php
-    //include('../conecta.php');
-    include('calcFrete_class.php');
+    include_once('../../conecta.php');
+    include_once('calcFrete_class.php');
     $mod = new CalcFrete(); // criando objeto a partir da classe CalcFrete
 
     if (isset($_REQUEST['acao'])) //se chegou acao por GET ou POST
@@ -13,7 +13,7 @@
         $modalidades = array('41106', '40215', '40010');
         $htm = '';
         for($cont = 0; $cont < 3; $cont++) {
-            $cf = $mod->calcula_frete($modalidades[$cont], '99064-440', $_REQUEST['cep'], '2', 's', '700', 's');
+            $cf = $mod->calcula_frete($modalidades[$cont], '99064-440', $_REQUEST['cep'], '0.1', 's', '700', 's');
             //echo $cf->Erro.'<br/>';
             //echo $_REQUEST['CEP'];
             switch ($cf->Codigo) {
@@ -41,6 +41,7 @@
         //echo $cf->Codigo;
         //echo $cf->Valor;
     }
+
 
     /*if ($acao == "listar") {
        echo  $rs = $mod->listarTabela();

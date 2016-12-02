@@ -1,8 +1,14 @@
 <?php
     class CalcFrete {
 
+        private $con, $bd; // para conexao
+        private $sql; // para os comandos SQL
+        private $res; // para resultado dos SQLs
+
         // metodo construtor
         public function __construct() {
+            $this->con = new Conecta();
+            $this->bd = $this->con->getBd();
         }
 
         public function calcula_frete($servico, $cep_origem, $cep_destino, $peso, $mao_propria, $valor_declarado, $aviso_recebimento) {
@@ -15,6 +21,17 @@
             $frete = $frete_calcula->cServico;
 
             return $frete;
+        }
+
+        public function getPeso($id_produto) {
+            $this->sql = "SELECT pro.pro_peso
+                            FROM produtos pro, cesta_itens cesit
+                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
+                             AND cesit.pro_id = pro.pro_id
+                             AND pro.pro_id = $id_produto";
+
+            $this->res = $this->bd->Execute($this->sql);
+            return $this->res;
         }
 
         function __destruct() {

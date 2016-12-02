@@ -1,4 +1,18 @@
-<?php include_once('calcFrete_control.php'); ?>
+<?php
+    include_once('calcFrete_control.php');
+    require('../../config.php');
+    //require('../../adodb/adodb.inc.php');
+    include_once('../../conecta.php');
+    //require('funcoes.php');
+
+    // UTILIZAMOS OS COMANDOS ABAIXO PARA TESTAR SE A CONEXÃO ESTÁ ESTABELECIDA COM SUCESSO
+    if($con = new Conecta()) {
+        echo 'Conectado com sucessu!';
+        echo $mod->getPeso(4);
+    } else {
+        echo $con->ErrorMsg();
+    }
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -57,7 +71,7 @@
                     <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                 </div>
                 <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item1">100,10</span>
+                    R$ <span class="item1"><?=$mod->getPeso(4);?></span>
                 </div>
                 <div class="col-lg-1 text-center">
                     <input id="item1" size="2" name="quantidade1" style="width:50px" min="1" max="99" step="1" type="number" value="1">
