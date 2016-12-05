@@ -43,7 +43,8 @@ $().ready(function () {
     $(document).on('click', '.calcFrete', function (event) {
         event.preventDefault();
         let $cep = $("#CEP").val(),
-            $reg = /^\d{5}(-\d{3})?$/;
+            $reg = /^\d{5}(-\d{3})?$/,
+            $pesTot = $pesoTotal.toFixed(2);
         if ($cep == "") {
             $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe o CEP para calcular o frete!</label>');
             return;
@@ -56,9 +57,11 @@ $().ready(function () {
             url: 'calcFrete_control.php',
             dataType: 'html',
             type: 'POST',
-            data: {acao: 'calcFrete', cep: $cep, pesoTotal: $pesoTotal},
+            data: {acao: 'calcFrete', cep: $cep, pesoTotal: $pesTot},
             beforeSend: function () {
                 $("#tipo_entrega").html('<label class="alert alert-info col-md-12">Aguardando a resposta dos Correios...<img src="images/ring.svg" style="width:50px;height:50px;"/></label>');
+                $('span.precoFrete').text('--------');
+                $('span.valorTotal').text('--------');
             },
             success: function (dados) {
                 $("#tipo_entrega").html(dados);
@@ -97,6 +100,14 @@ $().ready(function () {
             console.info(totIt);
             //$('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
             $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
+            let pesoIt = parseFloat($('#peso'+idProd).attr('data-val')) * $(this).val();
+            $('#peso'+idProd).val(pesoIt.toFixed(2));
+            $pesoTotal = 0.0;
+            $( ".peso" ).each(function( index ) {
+                $pesoTotal = $pesoTotal + parseFloat($(this).val());
+            });
+            console.info($pesoTotal.toFixed(2));
+            $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
             atualizaTotal();
         });
     });    
@@ -134,11 +145,37 @@ $().ready(function () {
         //$('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
         $('span.valorProdutos').text($totalItens.toFixed(2).replace(".", ","));
 
-        if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
-            let vlrTot = parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", "."));
+        //if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
+            let $cep = $("#CEP").val(),
+                $reg = /^\d{5}(-\d{3})?$/,
+                $pesTot = $pesoTotal.toFixed(2);
+            if ($cep == "") {
+                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe o CEP para recalcular o frete!</label>');
+                return;
+            }
+            if (!$reg.test($cep)) {
+                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe um CEP válido para recalcular o frete!</label>');
+                return;
+            }
+            $.ajax({
+                url: 'calcFrete_control.php',
+                dataType: 'html',
+                type: 'POST',
+                data: {acao: 'calcFrete', cep: $cep, pesoTotal: $pesTot},
+                beforeSend: function () {
+                    $("#tipo_entrega").html('<label class="alert alert-info col-md-12">Recalculando valor do Frete...<img src="images/ring.svg" style="width:50px;height:50px;"/></label>');
+                },
+                success: function (dados) {
+                    $("#tipo_entrega").html(dados);
+                }
+            });
+            $('span.precoFrete').text('--------');
+            $('span.valorTotal').text('--------');
+                                    
+            //let vlrTot = parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", "."));
             //$('span.valorTotal').text(parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", ".")));
-            $('span.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
-        } /*else {
+            //$('span.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
+        /*} /*else {
             $('span.valorTotal').text($('span.valorProdutos').text());
         }*/
     }

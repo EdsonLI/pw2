@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-lg-1 text-center">
                             <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
-                            <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_id'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
+                            <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
                         </div>
                         <div class="col-lg-1 text-center">
                             R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">98,00</span>

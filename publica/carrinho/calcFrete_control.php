@@ -21,6 +21,7 @@
     if ($acao == "calcFrete") {  // mostra a listagem        
         $modalidades = array('41106', '40215', '40010');
         $htm = '';
+        echo $_REQUEST['pesoTotal'];
         for($cont = 0; $cont < 3; $cont++) {
             $cf = $mod->calcula_frete($modalidades[$cont], '99064-440', $_REQUEST['cep'], $_REQUEST['pesoTotal'], 's', '700', 's');
             //echo $cf->Erro.'<br/>';
