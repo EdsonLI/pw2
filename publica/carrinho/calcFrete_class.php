@@ -61,15 +61,6 @@
                            WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
                              AND cesit.pro_id = pro.pro_id
                              AND pro.pro_id = $id_produto";
-            
-            $this->sql = "SELECT pro.pro_id,
-                                 pro.pro_descricao,
-                                 pro.pro_valor,
-                                 pro.pro_peso,
-                                 cesit.cite_qtd 
-                            FROM produtos pro, cesta_itens cesit 
-                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6' 
-                             AND cesit.pro_id = pro.pro_id";
 
             //echo $this->sql;
 

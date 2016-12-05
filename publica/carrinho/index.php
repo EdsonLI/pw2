@@ -69,6 +69,7 @@
                         </div>
                         <div class="col-lg-1 text-center">
                             <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
+                            <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_id'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
                         </div>
                         <div class="col-lg-1 text-center">
                             R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">98,00</span>
@@ -88,7 +89,7 @@
             <div class="table">
                 <div class="col-lg-5 text-left">
                     <div class="well btn-group">
-                        <a4>Calculo do Valor da Entrega:</a4><br><br>
+                        <a4>Calculo do Valor da Entrega (Peso <span class="pesoTotal">0.9</span> kg):</a4><br><br>
                         <div class="input-group">
                             <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="Informe o CEP (formato: 99150-000)">
                             <span class="input-group-btn">

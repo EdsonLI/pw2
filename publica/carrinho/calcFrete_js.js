@@ -1,20 +1,31 @@
 $().ready(function () {  
-    var totalItens = 0.0;
+    var $totalItens = 0.0,
+        $pesoTotal = 0.0;
     $( ".tableItens" ).each(function( index ) {
         //console.log( index + ": " + $( this ).attr('id') );
         let idProd = $( this ).attr('id');
         let totItem = parseFloat($('#quantidade'+idProd).val()) * parseFloat($('span.item'+idProd).text().replace(",", "."));
+        //let $pesoTotal = parseFloat($('#quantidade'+idProd).val()) * parseFloat($('#peso'+idProd).val());
         $('span.totItem'+idProd).text( totItem.toFixed(2).replace(".", ",") );
+        //$('.$pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
     });
     
     $( ".totalItem" ).each(function( index ) {
         //console.log( index + ": " + $( this ).text().replace(",", ".") );
         let aux = parseFloat($(this).text().replace(",", "."));
-        totalItens = totalItens + aux;
-        //totalItens + aux;    
+        $totalItens = $totalItens + aux;
+        //$totalItens + aux;    
         
     });
-    console.info(totalItens);
+    console.info($totalItens);
+    
+    $( ".peso" ).each(function( index ) {
+        //console.log( index + ": " + $( this ).text().replace(",", ".") );
+        $pesoTotal = $pesoTotal + parseFloat($(this).val());
+        //$totalItens + aux;    
+        
+    });
+    console.info($pesoTotal);
     
     /*let totItem1 = parseFloat($('#quantidade1').val()) * parseFloat($('span.item1').text().replace(",", "."));
     $('span.totItem1').text( totItem1.toFixed(2).replace(".", ",") );
@@ -24,7 +35,8 @@ $().ready(function () {
 
     //let totItem1Item2 = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
 
-    $('span.valorProdutos').text( totalItens.toFixed(2).replace(".", ",") );
+    $('span.valorProdutos').text( $totalItens.toFixed(2).replace(".", ",") );
+    $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
 
     //$('span.valorTotal').text($('span.valorProdutos').text());
 
@@ -44,7 +56,7 @@ $().ready(function () {
             url: 'calcFrete_control.php',
             dataType: 'html',
             type: 'POST',
-            data: {acao: 'calcFrete', cep: $cep},
+            data: {acao: 'calcFrete', cep: $cep, pesoTotal: $pesoTotal},
             beforeSend: function () {
                 $("#tipo_entrega").html('<label class="alert alert-info col-md-12">Aguardando a resposta dos Correios...<img src="images/ring.svg" style="width:50px;height:50px;"/></label>');
             },
@@ -108,19 +120,19 @@ $().ready(function () {
     });*/
 
     function atualizaTotal() {
-        totalItens = 0.00;
+        $totalItens = 0.00;
         $( ".totalItem" ).each(function( index ) {
             //console.log( index + ": " + $( this ).text().replace(",", ".") );
             let aux = parseFloat($(this).text().replace(",", "."));
-            totalItens = totalItens + aux;
-            //totalItens + aux;    
+            $totalItens = $totalItens + aux;
+            //$totalItens + aux;    
 
         });
-        console.info(totalItens);
+        console.info($totalItens);
                         
         //let vlrProd = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
         //$('span.valorProdutos').text(parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", ".")));
-        $('span.valorProdutos').text(totalItens.toFixed(2).replace(".", ","));
+        $('span.valorProdutos').text($totalItens.toFixed(2).replace(".", ","));
 
         if(parseFloat($('.precoFrete').text().replace(",", ".")) > 0.00) {
             let vlrTot = parseFloat($('span.ValorProdutos').text().replace(",", ".")) + parseFloat($('span.precoFrete').text().replace(",", "."));
