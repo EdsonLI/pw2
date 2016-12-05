@@ -1,15 +1,24 @@
 <?php
-    include('../../conecta.php');
-    include('calcFrete_class.php');
+    include_once('../../conecta.php');
+    include_once('calcFrete_class.php');
     $mod = new CalcFrete(); // criando objeto a partir da classe CalcFrete
 
     if (isset($_REQUEST['acao'])) //se chegou acao por GET ou POST
         $acao = $_REQUEST['acao'];
     else
         $acao = "";
+    
+    if ($acao == "") {  // mostra a listagem
+        //echo "chamou listar";
+        $rs = $mod->listar();
+    }
+    
+    if ($acao == "listarIdsProdutos") {
+        $idsProd = $mod->listarIdsProdutos();
+        return $idsProd;
+    }
 
-    if ($acao == "calcFrete") {  // mostra a listagem
-        //echo $cf->Valor;
+    if ($acao == "calcFrete") {  // mostra a listagem        
         $modalidades = array('41106', '40215', '40010');
         $htm = '';
         for($cont = 0; $cont < 3; $cont++) {

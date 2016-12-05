@@ -1,16 +1,8 @@
 <?php
-    include('../../config.php');
+    include_once('../../config.php');
     include('calcFrete_control.php');
-
-    /*include_once('../../conecta.php');
-
-    // UTILIZAMOS OS COMANDOS ABAIXO PARA TESTAR SE A CONEXÃO ESTÁ ESTABELECIDA COM SUCESSO
-    if($con = new Conecta()) {
-        echo 'Conectado com sucessu!';
-        echo $mod->getPeso(4);
-    } else {
-        echo $con->ErrorMsg();
-    }*/
+    //echo "teste";
+    //echo $mod->getPeso(4);
 ?>
 <html>
     <head>
@@ -65,39 +57,29 @@
                     <hr>
                 </div>
             </div>
-            <table class="table">
-                <div class="col-lg-9">
-                    <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
+            <?php
+                while (!$rs->EOF) { ?>
+                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>">
+                        <div class="col-lg-9">
+                            <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
+                            <span><?=$rs->fields['pro_descricao'];?></span>
+                        </div>
+                        <div class="col-lg-1 text-center text-center">
+                            R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
+                        </div>
+                        <div class="col-lg-1 text-center">
+                            <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
+                        </div>
+                        <div class="col-lg-1 text-center">
+                            R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">98,00</span>
+                        </div>
+                    </table>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <hr>
+                    </div>
                 </div>
-                <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item1">101,55</span>
-                </div>
-                <div class="col-lg-1 text-center">
-                    <input id="quantidade1" size="2" name="quantidade1" style="width:50px" min="1" max="99" step="1" type="number" value="1">
-                </div>
-                <div class="col-lg-1 text-center">
-                    R$ <span class="totItem1">98,00</span>
-                </div>
-            </table>
-            <div class="row">
-                <div class="col-lg-12">
-                    <hr>
-                </div>
-            </div>
-            <table class="table">
-                <div class="col-lg-9">
-                    <img src="images/11765725_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
-                </div>
-                <div class="col-lg-1 text-center text-center">
-                    R$ <span class="item2">100,10</span>
-                </div>
-                <div class="col-lg-1 text-center">
-                    <input id="quantidade2" size="2" name="quantidade2" style="width:50px" min="1" max="99" step="1" type="number" value="1">
-                </div>
-                <div class="col-lg-1 text-center">
-                    R$ <span class="totItem2">99,00</span>
-                </div>
-            </table>
+            <?php $rs->MoveNext(); } ?>            
             <div class="row">
                 <div class="col-lg-12">
                     <hr>
