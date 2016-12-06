@@ -178,7 +178,7 @@
                     <h2></h2>
                 </div>
                 <div class="col-lg-4 text-right">
-                    <button type="button" class="btn btn-success btn-md">IR PARA PAGAMENTO</button>
+                    <button type="button" class="btn btn-success btn-md gotofinalizar" disabled>IR PARA PAGAMENTO</button>
                 </div>
             </div>
         </div> <!-- /container -->

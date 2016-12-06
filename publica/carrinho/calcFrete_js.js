@@ -102,10 +102,12 @@ $().ready(function () {
         //$('.valorTotal').text( );
 
         $('.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
+        $('.gotofinalizar').removeAttr("disabled");
     });
     
     $('input[name="quantidade"]').on('change keyup', function() {
         $(this).each(function( index ) {
+            $('.gotofinalizar').prop("disabled", true);
             let idProd = $( this ).attr('data-val');
             console.info('id: '+idProd+' val: '+$(this).val());
             //console.info($(this).val());
