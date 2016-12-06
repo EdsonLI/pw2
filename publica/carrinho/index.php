@@ -38,18 +38,18 @@
                     <hr>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive"> 
                 <div class="col-lg-6">
-                    Produtos
+                    <strong>Produtos</strong>
                 </div>
                 <div class="col-lg-2 text-center">
-                    Quantidade
+                    <strong>Quantidade</strong>
                 </div>
                 <div class="col-lg-2 text-center">
-                    Valor Unitário
+                    <strong>Valor unitário</strong>
                 </div>
                 <div class="col-lg-2 text-center">
-                    Valor Total
+                    <strong>Valor total</strong>
                 </div>
             </div>
             <div class="row">
@@ -59,21 +59,21 @@
             </div>
             <?php
                 while (!$rs->EOF) { ?>
-                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>" style="height:100px;">
-                        <div class="col-lg-6">
+                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>">
+                        <div class="col-lg-6" style="height:50px;top:-10px;">
                             <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                             <span><?=$rs->fields['pro_descricao'];?></span>
                         </div>
-                        <div class="col-lg-2 text-center" style="top:10px;">
+                        <div class="col-lg-2 text-center" style="top:5px;">
                             <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
                             <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
                             <br>
                             <button type="button" class="btn btn-link btn-sm">Retirar do Carrinho</button>
                         </div>                        
-                        <div class="col-lg-2 text-center" style="top:25px;">
+                        <div class="col-lg-2 text-center" style="top:15px;">
                             R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
                         </div>
-                        <div class="col-lg-2 text-center" style="top:25px;">
+                        <div class="col-lg-2 text-center" style="top:15px;">
                             R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">0,00</span>
                         </div>
                     </table>
@@ -115,7 +115,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="text-right">
-                                Valor da entrega<span class="modalidade"></span>:
+                                Valor do envio<span class="modalidade"></span>:
                             </td>
                             <td class="text-right">
                                 R$
@@ -126,7 +126,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="text-right">
-                                <b>Valor total:</b> 
+                                <b>Valor total (produtos + envio):</b> 
                             </td>
                             <td class="text-right">
                                 <b>R$</b>
@@ -170,20 +170,17 @@
                     <hr>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-
+            <div class="row">                                           
+                <div class="col-lg-4 text-left">
+                    <button type="button" class="btn btn-primary btn-md">ESCOLHER MAIS PRODUTOS</button>
                 </div>
                 <div class="col-lg-4">
                     <h2></h2>
                 </div>
                 <div class="col-lg-4 text-right">
-                    <button type="button" class="btn btn-primary btn-lg">Finalizar Pedido</button>
+                    <button type="button" class="btn btn-success btn-md">IR PARA PAGAMENTO</button>
                 </div>
             </div>
-
-
-
         </div> <!-- /container -->
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -197,7 +194,7 @@
                 </div>
             </div>
             <div class="info text-center">
-                PW2 - Contato via Email
+                E-Commerce | PW2
             </div>
             <div class="row">
                 <div class="col-lg-12">
