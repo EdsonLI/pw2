@@ -65,7 +65,7 @@
                             <span><?=$rs->fields['pro_descricao'];?></span>
                         </div>
                         <div class="col-lg-2 text-center" style="top:5px;">
-                            <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
+                            <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px;padding-left:5px;" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
                             <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
                             <br>
                             <button type="button" class="btn btn-link btn-sm">Retirar do Carrinho</button>
@@ -85,11 +85,11 @@
                 </div>
             </div>-->
             <div class="table">
-                <div class="col-lg-5 text-left">
-                    <div class="well btn-group">
-                        <a4>Simule o prazo de entrega e o frete para seu CEP:<br/>(Peso <span class="pesoTotal">0.9</span> kg)</a4><br><br>
+                <div class="col-lg-6 text-left">
+                    <div class="well btn-group text-left">
+                        <a4>Simule o prazo de entrega e o frete para seu CEP (Peso <span class="pesoTotal">0.9</span> kg):</a4><br><br>
                         <div class="input-group">
-                            <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="Informe o CEP (formato: 99150-000)">
+                            <input type="text" class="form-control" size="10" maxlength="9" name="CEP" id="CEP" placeholder="Informe o CEP (formato: 99150-000)">
                             <span class="input-group-btn">
                                 <button class="btn btn-default calcFrete" type="button">Calcular!</button>
                             </span>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 text-center"></div>
+                <div class="col-lg-1 text-center"></div>
                 <div class="col-lg-5 text-right">
                     <table class="table well">
                         <tr>

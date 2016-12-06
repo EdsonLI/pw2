@@ -39,6 +39,19 @@ $().ready(function () {
     $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
 
     //$('span.valorTotal').text($('span.valorProdutos').text());
+    $('#CEP').keyup(function () {
+        let $re = new RegExp("[0-9]{5}-[0-9]{3}");
+        if ($(this).val().length == 5) {
+            $(this).val($(this).val()+'-');
+        } else if ($(this).val().length == this.maxLength) {
+            if($re.test($(this).val())) {            
+                $('.calcFrete').focus();
+            } else {
+                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe um CEP válido para calcular o frete!</label>');
+                return;
+            }
+        }
+    });
 
     $(document).on('click', '.calcFrete', function (event) {
         event.preventDefault();
