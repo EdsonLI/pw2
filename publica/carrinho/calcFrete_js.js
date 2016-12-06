@@ -110,7 +110,7 @@ $().ready(function () {
             $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
             atualizaTotal();
         });
-    });    
+    });
 
     /*$('input[name="quantidade1"]').on('change keyup', function() {
         console.info($(this).attr('id'));

@@ -29,8 +29,8 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h2>E-Commerce | PW2</h2>
+                <div class="col-md-8">
+                    <h2>E-Commerce | PW2 | Carrinho de Compras</h2>
                 </div>
             </div>
             <div class="row">
@@ -38,18 +38,18 @@
                     <hr>
                 </div>
             </div>
-            <div class="table">
-                <div class="col-lg-9">
+            <div class="table-responsive">
+                <div class="col-lg-6">
                     Produtos
                 </div>
-                <div class="col-lg-1 text-center">
-                    Valor Unit.
-                </div>
-                <div class="col-lg-1 text-center">
+                <div class="col-lg-2 text-center">
                     Quantidade
                 </div>
-                <div class="col-lg-1 text-center">
-                    Total
+                <div class="col-lg-2 text-center">
+                    Valor Unitário
+                </div>
+                <div class="col-lg-2 text-center">
+                    Valor Total
                 </div>
             </div>
             <div class="row">
@@ -59,37 +59,35 @@
             </div>
             <?php
                 while (!$rs->EOF) { ?>
-                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>">
-                        <div class="col-lg-9">
+                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>" style="height:100px;">
+                        <div class="col-lg-6">
                             <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
                             <span><?=$rs->fields['pro_descricao'];?></span>
                         </div>
-                        <div class="col-lg-1 text-center text-center">
-                            R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
-                        </div>
-                        <div class="col-lg-1 text-center">
+                        <div class="col-lg-2 text-center" style="top:10px;">
                             <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
                             <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
+                            <br>
+                            <button type="button" class="btn btn-link btn-sm">Retirar do Carrinho</button>
+                        </div>                        
+                        <div class="col-lg-2 text-center" style="top:25px;">
+                            R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
                         </div>
-                        <div class="col-lg-1 text-center">
-                            R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">98,00</span>
+                        <div class="col-lg-2 text-center" style="top:25px;">
+                            R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">0,00</span>
                         </div>
                     </table>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <hr>
-                    </div>
-                </div>
+                <hr>
             <?php $rs->MoveNext(); } ?>            
-            <div class="row">
+<!--            <div class="row">
                 <div class="col-lg-12">
                     <hr>
                 </div>
-            </div>
+            </div>-->
             <div class="table">
                 <div class="col-lg-5 text-left">
                     <div class="well btn-group">
-                        <a4>Calculo do Valor da Entrega (Peso <span class="pesoTotal">0.9</span> kg):</a4><br><br>
+                        <a4>Simule o prazo de entrega e o frete para seu CEP:<br/>(Peso <span class="pesoTotal">0.9</span> kg)</a4><br><br>
                         <div class="input-group">
                             <input type="text" class="form-control" size="10" name="CEP" id="CEP" placeholder="Informe o CEP (formato: 99150-000)">
                             <span class="input-group-btn">
@@ -101,14 +99,53 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-2 text-center"></div>
                 <div class="col-lg-5 text-right">
+                    <table class="table well">
+                        <tr>
+                            <td colspan="2" class="text-right">
+                                Valor total dos produtos:
+                            </td>
+                            <td class="text-right">
+                                R$
+                            </td>  
+                            <td class="text-right">
+                                <b><span class="valorProdutos">0,00</span></b>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-right">
+                                Valor da entrega<span class="modalidade"></span>:
+                            </td>
+                            <td class="text-right">
+                                R$
+                            </td>  
+                            <td class="text-right">
+                                <b><span class="precoFrete"> -------- </span></b>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-right">
+                                <b>Valor total:</b> 
+                            </td>
+                            <td class="text-right">
+                                <b>R$</b>
+                            </td>  
+                            <td class="text-right">
+                                <b><span class="valorTotal"> -------- </span></b>
+                            </td> 
+                        </tr>
+                    </table>                    
+                </div>
+                
+<!--                <div class="col-lg-5 text-right">
                     Valor Total dos Produtos:
                 </div>
                 <div class="col-lg-2 text-right">
                     <b>R$ <span class="valorProdutos">398,00</span></b>
-                </div>
+                </div>-->
             </div>
-            <div class="table">
+<!--            <div class="table">
                 <div class="col-lg-5 text-left">
 
                 </div>
@@ -126,8 +163,8 @@
                 </div>
                 <div class="col-lg-2 text-right">
                     <b>R$ <span class="valorTotal"> -------- </span></b>
-                </div>
-            </div>
+                </div>                                                
+            </div>-->
             <div class="row">
                 <div class="col-lg-12">
                     <hr>
