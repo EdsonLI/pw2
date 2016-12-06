@@ -165,11 +165,11 @@ $().ready(function () {
                 $reg = /^\d{5}(-\d{3})?$/,
                 $pesTot = $pesoTotal.toFixed(2);
             if ($cep == "") {
-                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe o CEP para recalcular o frete!</label>');
+                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe o CEP para calcular o frete!</label>');
                 return;
             }
             if (!$reg.test($cep)) {
-                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe um CEP válido para recalcular o frete!</label>');
+                $("#tipo_entrega").html('<br><label class="alert alert-danger col-md-12">Por favor informe um CEP válido para calcular o frete!</label>');
                 return;
             }
             $.ajax({
