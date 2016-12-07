@@ -135,52 +135,20 @@
                                 <b><span class="valorTotal"> -------- </span></b>
                             </td> 
                         </tr>
-                    </table>                    
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="text-left">
+                                <button type="button" class="btn btn-primary btn-md">ESCOLHER MAIS PRODUTOS</button>
+                            </td>
+                            <td class="text-center col-lg-2">&nbsp;</td>
+                            <td class="text-right col-lg-4">
+                                <button type="button" class="btn btn-success btn-md gotofinalizar" disabled>IR PARA PAGAMENTO</button>
+                            </td>  
+                        </tr>
+                    </table>
                 </div>
-                
-<!--                <div class="col-lg-5 text-right">
-                    Valor Total dos Produtos:
-                </div>
-                <div class="col-lg-2 text-right">
-                    <b>R$ <span class="valorProdutos">398,00</span></b>
-                </div>-->
-            </div>
-<!--            <div class="table">
-                <div class="col-lg-5 text-left">
-
-                </div>
-                <div class="col-lg-5 text-right">
-                    Valor da Entrega<span class="modalidade"></span>:<br>
-                </div>
-                <div class="col-lg-2 text-right">
-                    <b>R$ <span class="precoFrete"> -------- </span></b>
-                </div>
-                <div class="col-lg-7 text-right">
-                    <del>-------------</del>
-                </div>
-                <div class="col-lg-5 text-right">
-                    Valor Total a Pagar:
-                </div>
-                <div class="col-lg-2 text-right">
-                    <b>R$ <span class="valorTotal"> -------- </span></b>
-                </div>                                                
-            </div>-->
-            <div class="row">
-                <div class="col-lg-12">
-                    <hr>
-                </div>
-            </div>
-            <div class="row">                                           
-                <div class="col-lg-4 text-left">
-                    <button type="button" class="btn btn-primary btn-md">ESCOLHER MAIS PRODUTOS</button>
-                </div>
-                <div class="col-lg-4">
-                    <h2></h2>
-                </div>
-                <div class="col-lg-4 text-right">
-                    <button type="button" class="btn btn-success btn-md gotofinalizar" disabled>IR PARA PAGAMENTO</button>
-                </div>
-            </div>
+            </div>            
         </div> <!-- /container -->
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -203,5 +171,4 @@
             </div>
         </div>
     </footer>
-
 </html>
