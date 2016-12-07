@@ -6,7 +6,7 @@
         public function __construct() {
             $this->bd = ADONewConnection("postgres");
             $this->bd->debug = false;
-            $this->bd->Connect("host=localhost port=5433 dbname=pw2 user=postgres password=123");
+            $this->bd->Connect("host=localhost port=5432 dbname=pw2 user=postgres password=123");
         }
 
         public function getBd(){

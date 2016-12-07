@@ -7,18 +7,22 @@
         $acao = $_REQUEST['acao'];
     else
         $acao = "";
-    
+
     if ($acao == "") {  // mostra a listagem
         //echo "chamou listar";
         $rs = $mod->listar();
     }
-    
+
     if ($acao == "listarIdsProdutos") {
         $idsProd = $mod->listarIdsProdutos();
         return $idsProd;
     }
 
-    if ($acao == "calcFrete") {  // mostra a listagem        
+    if ($acao == "retirarProduto") {
+        return $mod->execRetirarProduto($_REQUEST['idProd']);
+    }
+
+    if ($acao == "calcFrete") {  // mostra a listagem
         $modalidades = array('40215', '40010', '41106');
         $htm = '';
         #echo $_REQUEST['pesoTotal'];
@@ -32,7 +36,7 @@
                 case 41106: $servico = 'PAC';
                     break;
                 //case 40045: $servico = 'SEDEX a Cobrar';
-                    //break;                
+                    //break;
                 //case 40290: $servico = 'SEDEX Hoje';
                     //break;
                 default: $servico = 'SEDEX';

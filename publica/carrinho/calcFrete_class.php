@@ -21,27 +21,27 @@
 
             return $frete;
         }
-        
-        public function listar() {                    
+
+        public function listar() {
             $this->sql = "SELECT pro.pro_id,
                                  pro.pro_descricao,
                                  pro.pro_valor,
                                  pro.pro_peso,
-                                 cesit.cite_qtd 
-                            FROM produtos pro, cesta_itens cesit 
-                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6' 
+                                 cesit.cite_qtd
+                            FROM produtos pro, cesta_itens cesit
+                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
                              AND cesit.pro_id = pro.pro_id";
 
             //echo $this->sql;
 
             $this->res = $this->bd->Execute($this->sql);
-            return $this->res;            
+            return $this->res;
         }
-        
-        public function listarIdsProdutos() {                    
-            $this->sql = "SELECT pro.pro_id 
-                            FROM produtos pro, cesta_itens cesit 
-                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6' 
+
+        public function listarIdsProdutos() {
+            $this->sql = "SELECT pro.pro_id
+                            FROM produtos pro, cesta_itens cesit
+                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
                              AND cesit.pro_id = pro.pro_id";
 
             //echo $this->sql;
@@ -52,7 +52,18 @@
                 $this->res->MoveNext();
             }
             echo $idProd;
-            //return json_encode($idProd);          
+            //return json_encode($idProd);
+        }
+
+        public function execRetirarProduto($id_produto) {
+            $this->sql = "DELETE FROM cesta_itens cesit
+                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
+                             AND cesit.pro_id = $id_produto";
+
+            echo $this->sql;
+
+            //$this->res = $this->bd->Execute($this->sql);
+            return $this->res;
         }
 
         public function getPeso($id_produto) {
@@ -65,7 +76,7 @@
             //echo $this->sql;
 
             $this->res = $this->bd->Execute($this->sql);
-            return $this->res->fields['pro_peso'];            
+            return $this->res->fields['pro_peso'];
         }
 
         function __destruct() {

@@ -38,7 +38,7 @@
                     <hr>
                 </div>
             </div>
-            <div class="table-responsive"> 
+            <div class="table-responsive">
                 <div class="col-lg-6">
                     <strong>Produtos</strong>
                 </div>
@@ -59,26 +59,28 @@
             </div>
             <?php
                 while (!$rs->EOF) { ?>
-                    <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>">
-                        <div class="col-lg-6" style="height:50px;top:-10px;">
-                            <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
-                            <span><?=$rs->fields['pro_descricao'];?></span>
-                        </div>
-                        <div class="col-lg-2 text-center" style="top:5px;">
-                            <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px;padding-left:5px;" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
-                            <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
-                            <br>
-                            <button type="button" class="btn btn-link btn-sm retirar_produto" data-val="<?=$rs->fields['pro_id'];?>">Retirar do Carrinho</button>
-                        </div>                        
-                        <div class="col-lg-2 text-center" style="top:15px;">
-                            R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
-                        </div>
-                        <div class="col-lg-2 text-center" style="top:15px;">
-                            R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">0,00</span>
-                        </div>
-                    </table>
-                <hr>
-            <?php $rs->MoveNext(); } ?>            
+                  <div class="div<?=$rs->fields['pro_id'];?>">
+                      <table class="table tableItens" id="<?=$rs->fields['pro_id'];?>">
+                          <div class="col-lg-6" style="height:50px;top:-10px;">
+                              <img src="images/12753581_1GG.jpg" class="img-thumbnail" width="75" height="75" alt=""/>
+                              <span><?=$rs->fields['pro_descricao'];?></span>
+                          </div>
+                          <div class="col-lg-2 text-center" style="top:5px;">
+                              <input id="quantidade<?=$rs->fields['pro_id'];?>" size="2" name="quantidade" data-val="<?=$rs->fields['pro_id'];?>" style="width:50px;padding-left:5px;" min="1" max="99" step="1" type="number" value="<?=$rs->fields['cite_qtd'];?>">
+                              <input type="hidden" id="peso<?=$rs->fields['pro_id'];?>" class="peso" data-val="<?=$rs->fields['pro_peso'];?>" value="<?=$rs->fields['pro_peso']*$rs->fields['cite_qtd'];?>">
+                              <br>
+                              <button type="button" class="btn btn-link btn-sm retirar_produto" data-val="<?=$rs->fields['pro_id'];?>" data-dismiss="modal" data-toggle="modal" data-target="#myModalExc">Retirar do Carrinho</button>
+                          </div>
+                          <div class="col-lg-2 text-center" style="top:15px;">
+                              R$ <span class="item<?=$rs->fields['pro_id'];?>"><?=$rs->fields['pro_valor'];?></span>
+                          </div>
+                          <div class="col-lg-2 text-center" style="top:15px;">
+                              R$ <span class="totalItem totItem<?=$rs->fields['pro_id'];?>">0,00</span>
+                          </div>
+                      </table>
+                  <hr>
+                  </div>
+            <?php $rs->MoveNext(); } ?>
 <!--            <div class="row">
                 <div class="col-lg-12">
                     <hr>
@@ -108,10 +110,10 @@
                             </td>
                             <td class="text-right">
                                 R$
-                            </td>  
+                            </td>
                             <td class="text-right">
                                 <b><span class="valorProdutos">0,00</span></b>
-                            </td> 
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-right">
@@ -119,21 +121,21 @@
                             </td>
                             <td class="text-right">
                                 R$
-                            </td>  
+                            </td>
                             <td class="text-right">
                                 <b><span class="precoFrete"> -------- </span></b>
-                            </td> 
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-right">
-                                <b>Valor total (produtos + envio):</b> 
+                                <b>Valor total (produtos + envio):</b>
                             </td>
                             <td class="text-right">
                                 <b>R$</b>
-                            </td>  
+                            </td>
                             <td class="text-right">
                                 <b><span class="valorTotal"> -------- </span></b>
-                            </td> 
+                            </td>
                         </tr>
                     </table>
                     <table>
@@ -144,11 +146,11 @@
                             <td class="text-center col-lg-2">&nbsp;</td>
                             <td class="text-right col-lg-4">
                                 <button type="button" class="btn btn-success btn-md gotofinalizar" disabled>IR PARA PAGAMENTO</button>
-                            </td>  
+                            </td>
                         </tr>
                     </table>
                 </div>
-            </div>            
+            </div>
         </div> <!-- /container -->
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -172,3 +174,42 @@
         </div>
     </footer>
 </html>
+
+<!-- Modal Mensagens de Exclusao -->
+<div id="myModalExc" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Informação</h4>
+            </div>
+            <div class="modal-body msgAdv">
+                <h4>Tem certeza que quer retirar este item do carrinho?</h4>
+            </div>
+            <div class="modal-footer">
+                <input type="button" value="Confirmar" class="btn btn-default confirma_exclui_item" data-dismiss="modal" data-val="">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Mensagens de Retorno -->
+<div id="myModalMsg" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Informação</h4>
+            </div>
+            <div class="modal-body">
+                <div class="msgOk" id="mensagem"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
