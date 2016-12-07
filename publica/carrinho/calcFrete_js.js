@@ -134,16 +134,17 @@ $().ready(function () {
         //$('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
         $('span.totItem1').text(totIt1.toFixed(2).replace(".", ","));
         atualizaTotal();
-    });
-
-    $('input[name="quantidade2"]').on('change keyup', function() {
-        console.info($(this).attr('id'));
-        console.info($(this).val());
-        let totIt2 = parseFloat($('span.item2').text().replace(",", ".")) * $(this).val();
-        //$('span.totItem2').text(parseFloat($('span.item2').text().replace(",", ".")) * $(this).val());
-        $('span.totItem2').text(totIt2.toFixed(2).replace(".", ","));
-        atualizaTotal();
     });*/
+
+    $('.retirar_produto').on('click', function() {
+        console.info($(this).attr('data-val'));
+        //$("table#"+$(this).attr('data-val')+" > *").remove();
+//        console.info($(this).val());
+//        let totIt2 = parseFloat($('span.item2').text().replace(",", ".")) * $(this).val();
+//        //$('span.totItem2').text(parseFloat($('span.item2').text().replace(",", ".")) * $(this).val());
+//        $('span.totItem2').text(totIt2.toFixed(2).replace(".", ","));
+//        atualizaTotal();
+    });
 
     function atualizaTotal() {
         $totalItens = 0.00;
