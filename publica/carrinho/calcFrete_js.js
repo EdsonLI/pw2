@@ -1,44 +1,28 @@
 $().ready(function () {
     var $totalItens = 0.0,
         $pesoTotal = 0.0;
+        
     $( ".tableItens" ).each(function( index ) {
-        //console.log( index + ": " + $( this ).attr('id') );
         let idProd = $( this ).attr('id');
         let totItem = parseFloat($('#quantidade'+idProd).val()) * parseFloat($('span.item'+idProd).text().replace(",", "."));
-        //let $pesoTotal = parseFloat($('#quantidade'+idProd).val()) * parseFloat($('#peso'+idProd).val());
         $('span.totItem'+idProd).text( totItem.toFixed(2).replace(".", ",") );
-        //$('.$pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
     });
 
     $( ".totalItem" ).each(function( index ) {
-        //console.log( index + ": " + $( this ).text().replace(",", ".") );
         let aux = parseFloat($(this).text().replace(",", "."));
         $totalItens = $totalItens + aux;
-        //$totalItens + aux;
 
     });
     console.info($totalItens);
 
     $( ".peso" ).each(function( index ) {
-        //console.log( index + ": " + $( this ).text().replace(",", ".") );
         $pesoTotal = $pesoTotal + parseFloat($(this).val());
-        //$totalItens + aux;
-
     });
-    console.info($pesoTotal);
-
-    /*let totItem1 = parseFloat($('#quantidade1').val()) * parseFloat($('span.item1').text().replace(",", "."));
-    $('span.totItem1').text( totItem1.toFixed(2).replace(".", ",") );
-
-    let totItem2 = parseFloat($('#quantidade2').val()) * parseFloat($('span.item2').text().replace(",", "."));
-    $('span.totItem2').text( totItem2.toFixed(2).replace(".", ",") );*/
-
-    //let totItem1Item2 = parseFloat($('span.totItem1').text().replace(",", ".")) + parseFloat($('span.totItem2').text().replace(",", "."));
+    console.info($pesoTotal);  
 
     $('span.valorProdutos').text( $totalItens.toFixed(2).replace(".", ",") );
     $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
 
-    //$('span.valorTotal').text($('span.valorProdutos').text());
     $('#CEP').keyup(function () {
         let $re = new RegExp("[0-9]{5}-[0-9]{3}");
         if ($(this).val().length == 5) {
@@ -83,7 +67,6 @@ $().ready(function () {
     });
 
     $(document).on('change', '#entrega', function() {
-        //alert($('input[name=entrega]:checked').val());
         let $servico;
         switch($('input[name=entrega]:checked').val()) {
             case '41106': $servico = 'PAC';
@@ -99,7 +82,6 @@ $().ready(function () {
         $('.modalidade').text(' ('+$servico+')');
         $('.precoFrete').text($('.val_frete'+$('input[name=entrega]:checked').val()).text());
         let vlrTot = parseFloat($('.valorProdutos').text().replace(",", ".")) + parseFloat($('.precoFrete').text().replace(",", "."));
-        //$('.valorTotal').text( );
 
         $('.valorTotal').text(vlrTot.toFixed(2).replace(".", ","));
         $('.gotofinalizar').removeAttr("disabled");
@@ -110,10 +92,8 @@ $().ready(function () {
             $('.gotofinalizar').prop("disabled", true);
             let idProd = $( this ).attr('data-val');
             console.info('id: '+idProd+' val: '+$(this).val());
-            //console.info($(this).val());
             let totIt = parseFloat($('span.item'+idProd).text().replace(",", ".")) * $(this).val();
             console.info(totIt);
-            //$('span.totItem1').text(parseFloat($('span.item1').text().replace(",", ".")) * $(this).val());
             $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
             let pesoIt = parseFloat($('#peso'+idProd).attr('data-val')) * $(this).val();
             $('#peso'+idProd).val(pesoIt.toFixed(2));
@@ -151,6 +131,12 @@ $().ready(function () {
                 $("#mensagem").html("OK! Item retirado do carrinho!");
                 openModalMsg();
                 $(".div"+$id_produto).remove();
+                $pesoTotal = 0.0;
+                $( ".peso" ).each(function( index ) {
+                    $pesoTotal = $pesoTotal + parseFloat($(this).val());
+                });
+                console.info($pesoTotal.toFixed(2));
+                $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
                 atualizaTotal();
                 setTimeout(closeModalMsg, 3000);
                 console.info('retorno retirarProduto: ', dados);
@@ -161,10 +147,8 @@ $().ready(function () {
     function atualizaTotal() {
         $totalItens = 0.00;
         $( ".totalItem" ).each(function( index ) {
-            //console.log( index + ": " + $( this ).text().replace(",", ".") );
             let aux = parseFloat($(this).text().replace(",", "."));
             $totalItens = $totalItens + aux;
-            //$totalItens + aux;
 
         });
         console.info($totalItens);

@@ -1,7 +1,14 @@
 Atvidade pendente:
 
+Concluir funcionalidade de retirar do carrinho... (Edson - fila)
+
+Trabalhar na transição da página de calculo do frete para checkout... (Julio - fila)
+
+
+
+
 Ao modificar a quantidade tratar para recalcular o frete
-a partir do peso total dos produtos selecionados na cesta...
+a partir do peso total dos produtos selecionados na cesta... (Edson - concluído)
 
 Trabalhar no ajax para buscar produtos da cesta_itens com
-a descrição, imagem, quantidade e valor unitário...
+a descrição, imagem, quantidade e valor unitário... (Edson - concluído)
