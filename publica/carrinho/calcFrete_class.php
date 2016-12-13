@@ -66,6 +66,18 @@
             return $this->res;
         }
 
+        public function execAtualizaQtdItem($id_produto, $qtd_item) {
+            $this->sql = "UPDATE cesta_itens
+                             SET cite_qtd = $qtd_item
+                           WHERE ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
+                             AND pro_id = $id_produto";
+
+            #echo $this->sql;
+
+            $this->res = $this->bd->Execute($this->sql);
+            return $this->res;
+        }
+
         public function getPeso($id_produto) {
             $this->sql = "SELECT pro.pro_peso
                             FROM produtos pro, cesta_itens cesit

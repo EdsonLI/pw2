@@ -1,7 +1,7 @@
 $().ready(function () {
     var $totalItens = 0.0,
         $pesoTotal = 0.0;
-        
+
     $( ".tableItens" ).each(function( index ) {
         let idProd = $( this ).attr('id');
         let totItem = parseFloat($('#quantidade'+idProd).val()) * parseFloat($('span.item'+idProd).text().replace(",", "."));
@@ -18,7 +18,7 @@ $().ready(function () {
     $( ".peso" ).each(function( index ) {
         $pesoTotal = $pesoTotal + parseFloat($(this).val());
     });
-    console.info($pesoTotal);  
+    console.info($pesoTotal);
 
     $('span.valorProdutos').text( $totalItens.toFixed(2).replace(".", ",") );
     $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
@@ -94,7 +94,19 @@ $().ready(function () {
             console.info('id: '+idProd+' val: '+$(this).val());
             let totIt = parseFloat($('span.item'+idProd).text().replace(",", ".")) * $(this).val();
             console.info(totIt);
-            $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
+            
+            $.ajax({
+                url: 'calcFrete_control.php',
+                dataType: 'html',
+                type: 'POST',
+                data: {acao: 'atualizaQtdItem', idProd: idProd, qtdItem: $(this).val()},
+                success: function (dados) {
+                    $("#mensagem").html("OK! Quantidade atualizada!");
+                    openModalMsg();
+                    $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
+                }
+            });
+
             let pesoIt = parseFloat($('#peso'+idProd).attr('data-val')) * $(this).val();
             $('#peso'+idProd).val(pesoIt.toFixed(2));
             $pesoTotal = 0.0;

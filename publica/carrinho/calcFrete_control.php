@@ -22,6 +22,10 @@
         return $mod->execRetirarProduto($_REQUEST['idProd']);
     }
 
+    if ($acao == "atualizaQtdItem") {
+        return $mod->execAtualizaQtdItem($_REQUEST['idProd'], $_REQUEST['qtdItem']);
+    }
+
     if ($acao == "calcFrete") {  // mostra a listagem
         $modalidades = array('40215', '40010', '41106');
         $htm = '';
