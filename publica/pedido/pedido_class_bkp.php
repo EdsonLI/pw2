@@ -34,7 +34,7 @@ class finalizaPedido {
         
         $this->resConsultaCesta = $this->bd->Execute($this->sqlConsultaCesta);
         echo $this->resConsultaCesta;
-        //return $this->resConsultaCesta;
+        return $this->resConsultaCesta;
     }
 
     public function finalizarPedido($totalPedido, $fretePedido, $prazoEntrega) {
@@ -67,31 +67,36 @@ class finalizaPedido {
         return $this->res->fields['pro_peso'];
     }
 
-    public function gerarItensPedido($ultimoPedID) {
+    public function gerarItensPedido() {
         $this->sqlConsultaCesta =  "SELECT cesit.pro_id, cesit.cite_qtd, cesit.cite_valor, 
                                            cesta.cli_id, 
-                                           pro.pro_descricao, pro_estoque, pro_promocao
+                                           pro.pro_descricao, pro_estoque, pro_promocao,
+                                           cli.cli_endereco, cli.cli_bairro, cli.cli_cep, cli.cid_id, cli.cli_fone1,
+                                           cid.cid_nome, cid.cid_uf
                                       FROM cesta_itens cesit, 
                                            cesta, 
-                                           produtos pro
+                                           produtos pro, 
+                                           clientes cli, 
+                                           cidades cid
                                      WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
                                        AND cesit.ces_sessao = cesta.ces_sessao
-                                       AND cesit.pro_id = pro.pro_id";
+                                       AND cesit.pro_id = pro.pro_id
+                                       AND cesta.cli_id = cli.cli_id
+                                       AND cli.cid_id = cid.cid_id";
         
         $this->resConsultaCesta = $this->bd->Execute($this->sqlConsultaCesta);
 
-        while (!$this->resConsultaCesta->EOF) {
-            $idProd = $this->resConsultaCesta->fields['pro_id'];
-            $qtdProd = $this->resConsultaCesta->fields['cite_qtd'];
-            $valorProd = $this->resConsultaCesta->fields['cite_valor'];
-            
+        while (!$this->res->EOF) {
+            $idProd = $this->res->fields['pro_id'];
+            $qtdProd = $this->res->fields['cite_qtd'];
+            $valorProd = $this->res->fields['cite_valor'];
             $this->sqlItensPedido = "  INSERT INTO 
                                      pedidos_itens (ped_id, pro_id, ite_qtd, ite_valor) 
-                                            VALUES ($ultimoPedID, $idProd, $qtdProd,$valorProd)
+                                            VALUES ($idProd, $qtdProd,$valorProd)
+                                             where 
                                     ";
-            echo $this->sqlItensPedido;
-            $this->resItensPedido = $this->bd->Execute($this->sqlItensPedido);
-            $this->resConsultaCesta->MoveNext();
+            $this->res = $this->bd->Execute($this->sqlItensPedido);
+            $this->res->MoveNext();
         }
         echo $idProd;
     }
@@ -111,7 +116,7 @@ class finalizaPedido {
         $dataPedido = date("Y-m-d");
         $horaPedido = date("H:i:s");
         $tipoPagPedido = "C";
-        $statusPedido = "1";
+        $statusPedido = " ";
         $dataEnvioPedido = date('Y-m-d', strtotime("+$prazoEntrega days"));;
         $idCliente = 1;
         $tipoFretePedido = 1;
@@ -128,36 +133,17 @@ class finalizaPedido {
                                 VALUES ('$dataPedido', '$horaPedido', $totalPedido, $fretePedido,
                                         '$tipoPagPedido', '$statusPedido', '$dataEnvioPedido', $idCliente,
                                         $tipoFretePedido, '$enderecoPedido', '$bairroPedido', $cepPedido,
-                                        $cidadePedido) 
-                              RETURNING ped_id
+                                        $cidadePedido)
                                         ";  
         echo "<br><br>".$this->sqlPedido;
-        $this->res = $this->bd->Execute($this->sqlPedido);
-        $ultimoPedID = $this->res->fields['ped_id'];
-        echo $ultimoPedID;
-        
-        $this->gerarItensPedido($ultimoPedID);
+//        $this->res = $this->bd->Execute($this->sqlPedido);
+//        $ultimoPedID = $this->db->Insert_ID();
 
         //return $this->res->fields['ped_id'];
         return $retorno;
     }
     
-    public function mostrarDadosPedido($idPedido) {
-        $this->sql = "SELECT pro.pro_id
-                            FROM produtos pro, cesta_itens cesit
-                           WHERE cesit.ces_sessao = 'l9pl5sag3ho56ktamlm1nj7af6'
-                             AND cesit.pro_id = pro.pro_id";
-
-        //echo $this->sql;
-
-        $this->res = $this->bd->Execute($this->sql);
-        while (!$this->res->EOF) {
-            $idProd[] = $this->res->fields['pro_id'];
-            $this->res->MoveNext();
-        }
-        echo $idProd;
-        //return json_encode($idProd);
-    }
+    
 
     function __destruct() {
         //echo "chamou o destrutor";

@@ -59,25 +59,4 @@
         //echo $cf->Codigo;
         //echo $cf->Valor;
     }
-
-
-    /*if ($acao == "listar") {
-       echo  $rs = $mod->listarTabela();
-    }
-
-    if ($acao == "alterar") {
-       echo  $rs = $mod->alterar($_REQUEST['id']);
-    }
-
-    if ($acao == "excluir") {
-        echo $mod->excluir($_REQUEST['id']);
-    }
-
-    if ($acao == "gravarIncluir") {
-        echo $mod->gravarIncluir($_REQUEST['marca'], $_REQUEST['modelo'], $_REQUEST['ano']);
-
-    }
-    if ($acao == "gravarAlterar") {
-        echo $mod->gravarAlterar($_REQUEST['id'], $_REQUEST['marca'], $_REQUEST['modelo'], $_REQUEST['ano']);
-    }*/
 ?>

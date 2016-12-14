@@ -87,26 +87,14 @@ $().ready(function () {
         $('.gotofinalizar').removeAttr("disabled");
     });
 
-    $('input[name="quantidade"]').on('change keyup', function() {
-        $(this).each(function( index ) {
+    $('input[name="quantidade"]').on('change keyup', function() {                
+        $(this).each(function( index ) {                        
             $('.gotofinalizar').prop("disabled", true);
             let idProd = $( this ).attr('data-val');
             console.info('id: '+idProd+' val: '+$(this).val());
             let totIt = parseFloat($('span.item'+idProd).text().replace(",", ".")) * $(this).val();
-            console.info(totIt);
-            
-            $.ajax({
-                url: 'calcFrete_control.php',
-                dataType: 'html',
-                type: 'POST',
-                data: {acao: 'atualizaQtdItem', idProd: idProd, qtdItem: $(this).val()},
-                success: function (dados) {
-                    $("#mensagem").html("OK! Quantidade atualizada!");
-                    openModalMsg();
-                    $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
-                }
-            });
-
+            console.info(totIt);           
+            $('span.totItem'+idProd).text(totIt.toFixed(2).replace(".", ","));
             let pesoIt = parseFloat($('#peso'+idProd).attr('data-val')) * $(this).val();
             $('#peso'+idProd).val(pesoIt.toFixed(2));
             $pesoTotal = 0.0;
@@ -116,6 +104,7 @@ $().ready(function () {
             console.info($pesoTotal.toFixed(2));
             $('span.pesoTotal').text( $pesoTotal.toFixed(2).replace(".", ",") );
             atualizaTotal();
+            ajxAtualizaItemQtd(idProd, $(this).val())
         });
     });
 
@@ -129,6 +118,19 @@ $().ready(function () {
         event.preventDefault();
         ajxExclusaoItem($(this).attr('data-val'));
     });
+
+    function ajxAtualizaItemQtd($id_produto, $qtd) {
+        $.ajax({
+            url: 'calcFrete_control.php',
+            dataType: 'html',
+            type: 'POST',
+            data: {acao: 'atualizaQtdItem', idProd: $id_produto, qtdItem: $qtd},
+            success: function (dados) {
+                $("#mensagem").html("OK! Quantidade atualizada!");
+                openModalMsg();
+            }
+        });        
+    }
 
     function ajxExclusaoItem($id_produto) {
         $.ajax({
